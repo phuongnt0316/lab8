@@ -4,13 +4,33 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Scanner;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class GiangVien {
-    String tenGV;
-    String email;
-    String diaChi;
-    String dienThoai;
-    int soGio;
+    private  String tenGV;
+    private String email;
+    private String diaChi;
+    private String dienThoai;
+    private int soGio;
+    public void nhap(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Nhap ten giang vien: ");
+        tenGV=sc.nextLine();
+        System.out.println("Nhap email:");
+        email=sc.nextLine();
+        System.out.println("Nhap dia chi:");
+        diaChi=sc.nextLine();
+        System.out.println("Nhap so dien thoai");
+        dienThoai=sc.nextLine();
+        System.out.println("Nhap so gio giang day");
+        soGio=Integer.parseInt(sc.nextLine());
+
+
+    }
+    public void xuat(){
+        System.out.print(tenGV+"-"+email+"-"+diaChi+"-"+dienThoai+"-"+soGio+"-");
+    }
 }
