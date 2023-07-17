@@ -35,7 +35,27 @@ public class QuanLyHoKhau {
 
         }
     }
-    public void timNguoi(){
+    public void timNguoi(String name){
+       boolean flag=false;
+        for (int i = 0; i < arrSoHoKhau.length; i++) {
+            SoHoKhau shk=new SoHoKhau();
+            shk=arrSoHoKhau[i];
+            for (int j = 0; j < shk.getArrThanhVien().length; j++) {
+                HoKhau hk=new HoKhau();
+                hk=shk.getArrThanhVien()[j];
+                if(hk.getHoten().equals(name)){
+                    arrSoHoKhau[i].hienThi();
+                    flag=true;
+                    break;
+                }
+
+            }
+
+
+        }
+        if(flag==false){
+            System.out.println("Khong tim thay!");
+        }
 
     }
 
@@ -52,7 +72,11 @@ public class QuanLyHoKhau {
                     quanLyHoKhau.danhsachSHK();
                     break;
                 case 3:
-                    quanLyHoKhau.timNguoi();
+                    String name;
+                    Scanner sc=new Scanner(System.in);
+                    System.out.println("Nhap ten ho ten can tim kiem");
+                    name=sc.nextLine();
+                    quanLyHoKhau.timNguoi(name);
                     break;
             }
 

@@ -1,7 +1,12 @@
 package baith2;
 
-import java.util.Scanner;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.Scanner;
+@Data
+@AllArgsConstructor
 public class HoKhau extends NhanKhau{
     private String diaChiHienNay;
     private String noiCongTac;

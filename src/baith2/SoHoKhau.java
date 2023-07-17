@@ -1,5 +1,9 @@
 package baith2;
 
+import lombok.Data;
+
+@Data
+
 public class SoHoKhau {
     private int soNhanKhau;
     private HoKhau[] arrThanhVien;
