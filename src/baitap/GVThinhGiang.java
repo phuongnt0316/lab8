@@ -21,4 +21,9 @@ public class GVThinhGiang extends GiangVien{
         super.xuat();
         System.out.println(tenCoQuan);
     }
+    public int tinhluong(){
+        int luong=0;
+        luong=getSoGio()*200;
+        return luong;
+    }
 }

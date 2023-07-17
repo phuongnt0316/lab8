@@ -10,7 +10,7 @@ import java.util.Scanner;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GVCoHuu extends GiangVien{
-    private int luong;
+    private int luongcoban;
     private int gioQuyDinh;
 
     @Override
@@ -19,7 +19,7 @@ public class GVCoHuu extends GiangVien{
         super.nhap();
         Scanner sc=new Scanner(System.in);
         System.out.println("Nhap luong co ban");
-        luong=Integer.parseInt(sc.nextLine());
+        luongcoban=Integer.parseInt(sc.nextLine());
         System.out.println("Nhap so gio quy dinh");
         gioQuyDinh=Integer.parseInt(sc.nextLine());
 
@@ -29,6 +29,11 @@ public class GVCoHuu extends GiangVien{
     public void xuat() {
         System.out.print("GVCH-");
         super.xuat();
-        System.out.print(luong+"-"+gioQuyDinh+"\n");
+        System.out.print(luongcoban+"-"+gioQuyDinh+"\n");
+    }
+    public int tinhluong(){
+        int luong=0;
+        luong=getSoGio()>gioQuyDinh?getLuongcoban():(getLuongcoban()+(getSoGio()-gioQuyDinh)*200);
+        return luong;
     }
 }
