@@ -5,25 +5,34 @@ import java.util.List;
 import java.util.Scanner;
 
 public class QuanLyGiangVien {
-    private List<GiangVien> giangvien = new ArrayList<>();
+    public static List<GiangVien> giangvien = new ArrayList<>();
 
-    public int showMenu() {
-        int n;
-        System.out.println("-----MENU-----");
-        System.out.println("1. Nhap vao thong tin cua giang vien");
-        System.out.println("2. Xuat danh sach toan bo giang vien");
-        System.out.println("3. Xuat danh sach giang vien co huu");
-        System.out.println("4. Xuat danh sach giang vien thinh giang");
-        System.out.println("5. Tinh tong tien luong cua toan bo giang vien");
-        System.out.println("6. Tim giang vien co tong luong cao nhat");
-        System.out.println("7. Ket thuc");
-        System.out.println("Nhap chuc nang 1-7");
-        Scanner sc = new Scanner(System.in);
-        n = Integer.parseInt(sc.nextLine());
-        return n;
+    public static int showMenu() {
+        boolean flag=true;
+        do {
+            System.out.println("-----MENU-----");
+            System.out.println("1. Nhap vao thong tin cua giang vien");
+            System.out.println("2. Xuat danh sach toan bo giang vien");
+            System.out.println("3. Xuat danh sach giang vien co huu");
+            System.out.println("4. Xuat danh sach giang vien thinh giang");
+            System.out.println("5. Tinh tong tien luong cua toan bo giang vien");
+            System.out.println("6. Tim giang vien co tong luong cao nhat");
+            System.out.println("7. Ket thuc");
+            System.out.println("Nhap chuc nang 1-7");
+            try {
+                Scanner sc = new Scanner(System.in);
+                return Integer.parseInt(sc.nextLine());
+
+            } catch (Exception e) {
+                System.out.println("Nhap so: ");
+            }
+
+
+        }while (flag);
+        return 0;
     }
 
-    public void nhapThongTin() {
+        public static void nhapThongTin() {
         boolean flag = true;
         do {
             System.out.println("1. Nhap giang vien co huu");
@@ -48,7 +57,7 @@ public class QuanLyGiangVien {
                     flag = false;
                     break;
                 default:
-                    System.out.println("Nhap lai: ");
+                    System.out.println("Nhap so 1-7: ");
                     break;
             }
         } while (flag);
@@ -56,14 +65,14 @@ public class QuanLyGiangVien {
 
     }
 
-    void xuatDanhSach() {
+     public static void  xuatDanhSach() {
         for (GiangVien item : giangvien) {
             item.xuat();
 
         }
     }
 
-    void xuatGiangVienCoHuu() {
+    public static void xuatGiangVienCoHuu() {
         for (GiangVien item : giangvien) {
             if (item instanceof GVCoHuu) {
                 item.xuat();
@@ -71,7 +80,7 @@ public class QuanLyGiangVien {
         }
     }
 
-    void xuatGiangVienThinhGiang() {
+    public static void xuatGiangVienThinhGiang() {
         for (GiangVien item : giangvien) {
             if (item instanceof GVThinhGiang) {
                 item.xuat();
@@ -79,22 +88,22 @@ public class QuanLyGiangVien {
         }
     }
 
-    int tongLuong() {
+   public static int tongLuong() {
         int sum = 0;
         for (GiangVien item : giangvien) {
             if (item instanceof GVCoHuu) {
-                GVCoHuu ch = new GVCoHuu();
+                GVCoHuu ch =(GVCoHuu) item;
                 sum += ch.tinhluong();
 
             } else {
-                GVThinhGiang tg = new GVThinhGiang();
+                GVThinhGiang tg = (GVThinhGiang) item;
                 sum += tg.tinhluong();
             }
         }
         return sum;
     }
 
-    int max() {
+   public static int max() {
         int max = 0;
         for (GiangVien item : giangvien) {
             if (item instanceof GVCoHuu) {
@@ -111,6 +120,42 @@ public class QuanLyGiangVien {
 
 
     public static void main(String[] args) {
+        GVThinhGiang gv=new GVThinhGiang("1","1","1","1",60,"1");
+        GVCoHuu ch=new GVCoHuu("Nga","2","2","2",60,2000,40);
+        giangvien.add(gv);
+        giangvien.add(ch);
+        boolean flag=true;
+        do{
+           int n=showMenu();
+           switch (n){
+               case 1:
+                   nhapThongTin();
+                   break;
+               case 2:
+                   xuatDanhSach();
+                   break;
+               case 3:
+                   xuatGiangVienCoHuu();
+                   break;
+               case 4:
+                   xuatGiangVienThinhGiang();
+                   break;
+               case 5:
+                   System.out.println("Tong luong:"+tongLuong());
+                   break;
+               case 6:
+                   System.out.println("6");
+                   break;
+               case 7:
+                   System.out.println("7");
+                   flag=false;
+                   break;
+               default:
+                   System.out.println("nhap lai");
+                   break;
+           }
+        }while (flag);
+
 
     }
 }

@@ -1,17 +1,26 @@
 package baitap;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Scanner;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class GVCoHuu extends GiangVien{
     private int luongcoban;
     private int gioQuyDinh;
+
+    public GVCoHuu(String tenGV, String email, String diaChi, String dienThoai, int soGio, int luongcoban, int gioQuyDinh) {
+        super(tenGV, email, diaChi, dienThoai, soGio);
+        this.luongcoban = luongcoban;
+        this.gioQuyDinh = gioQuyDinh;
+    }
+
+    public GVCoHuu(int luongcoban, int gioQuyDinh) {
+        this.luongcoban = luongcoban;
+        this.gioQuyDinh = gioQuyDinh;
+    }
 
     @Override
     public void nhap() {
@@ -33,7 +42,7 @@ public class GVCoHuu extends GiangVien{
     }
     public int tinhluong(){
         int luong=0;
-        luong=getSoGio()>gioQuyDinh?getLuongcoban():(getLuongcoban()+(getSoGio()-gioQuyDinh)*200);
+        luong=getSoGio()<gioQuyDinh?getLuongcoban():(getLuongcoban()+(getSoGio()-gioQuyDinh)*200);
         return luong;
     }
 }
