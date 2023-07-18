@@ -88,30 +88,33 @@ public class QuanLyGiangVien {
         }
     }
 
-   public static int tongLuong() {
+//   public static int tongLuong() {
+//        int sum = 0;
+//        for (GiangVien item : giangvien) {
+//            if (item instanceof GVCoHuu) {
+//                GVCoHuu ch =(GVCoHuu) item;
+//                sum += ch.tinhluong();
+//
+//            } else {
+//                GVThinhGiang tg = (GVThinhGiang) item;
+//                sum += tg.tinhluong();
+//            }
+//        }
+//        return sum;
+//    }
+    public static int tongLuong() {
         int sum = 0;
         for (GiangVien item : giangvien) {
-            if (item instanceof GVCoHuu) {
-                GVCoHuu ch =(GVCoHuu) item;
-                sum += ch.tinhluong();
-
-            } else {
-                GVThinhGiang tg = (GVThinhGiang) item;
-                sum += tg.tinhluong();
-            }
+            sum+=item.tinhluong();
         }
         return sum;
     }
 
-   public static int max() {
+
+    public static int max() {
         int max = 0;
         for (GiangVien item : giangvien) {
-            if (item instanceof GVCoHuu) {
-                if ( ((GVCoHuu) item).tinhluong() > max) max = ((GVCoHuu) item).tinhluong();
-
-            } else {
-                if (((GVThinhGiang)item).tinhluong() > max) max = ((GVThinhGiang)item).tinhluong();
-            }
+            max= item.tinhluong()>max? item.tinhluong() : max;
         }
         return max;
     }

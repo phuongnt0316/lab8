@@ -9,7 +9,7 @@ import java.util.Scanner;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GiangVien {
+public abstract class GiangVien {
     private  String tenGV;
     private String email;
     private String diaChi;
@@ -30,6 +30,7 @@ public class GiangVien {
 
 
     }
+    public abstract int tinhluong();
     public void xuat(){
         System.out.print(tenGV+"-"+email+"-"+diaChi+"-"+dienThoai+"-"+soGio+"-");
     }
