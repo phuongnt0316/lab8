@@ -107,12 +107,10 @@ public class QuanLyGiangVien {
         int max = 0;
         for (GiangVien item : giangvien) {
             if (item instanceof GVCoHuu) {
-                GVCoHuu ch = new GVCoHuu();
-                if (ch.tinhluong() > max) max = ch.tinhluong();
+                if ( ((GVCoHuu) item).tinhluong() > max) max = ((GVCoHuu) item).tinhluong();
 
             } else {
-                GVThinhGiang tg = new GVThinhGiang();
-                if (tg.tinhluong() > max) max = tg.tinhluong();
+                if (((GVThinhGiang)item).tinhluong() > max) max = ((GVThinhGiang)item).tinhluong();
             }
         }
         return max;
@@ -120,10 +118,14 @@ public class QuanLyGiangVien {
 
 
     public static void main(String[] args) {
-        GVThinhGiang gv=new GVThinhGiang("1","1","1","1",60,"1");
-        GVCoHuu ch=new GVCoHuu("Nga","2","2","2",60,2000,40);
+        GVThinhGiang gv=new GVThinhGiang("1","1","1","1",30,"1");
+        GVThinhGiang gv2=new GVThinhGiang("2","1","1","1",20,"1");
+        GVCoHuu ch=new GVCoHuu("3","2","2","2",60,2000,40);
+        GVCoHuu ch2=new GVCoHuu("4","2","2","2",40,2000,40);
         giangvien.add(gv);
+        giangvien.add(gv2);
         giangvien.add(ch);
+        giangvien.add(ch2);
         boolean flag=true;
         do{
            int n=showMenu();
@@ -144,10 +146,19 @@ public class QuanLyGiangVien {
                    System.out.println("Tong luong:"+tongLuong());
                    break;
                case 6:
-                   System.out.println("6");
+                   System.out.println("Luong cao nhat: "+max());
+                   System.out.println("Danh sach nhan vien luong cao nhat");
+                   for (GiangVien item : giangvien) {
+                       if (item instanceof GVCoHuu) {
+                           if ( ((GVCoHuu) item).tinhluong() ==max()) item.xuat();
+
+                       } else {
+                           if (((GVThinhGiang)item).tinhluong() == max())  item.xuat();
+                       }
+                   }
                    break;
                case 7:
-                   System.out.println("7");
+                   System.out.println("Ket thuc");
                    flag=false;
                    break;
                default:
